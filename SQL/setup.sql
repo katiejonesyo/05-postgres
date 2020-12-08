@@ -5,4 +5,36 @@ cuteness TEXT,
 size TEXT
 );
 
-module.export { frog }
+CREATE TABLE candy (
+id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+candy TEXT NOT NULL,
+sweet TEXT,
+sour TEXT
+);
+
+CREATE TABLE mexicanfood (
+id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+food TEXT NOT NULL,
+spicy TEXT,
+burrito TEXT,
+taco TEXT
+);
+
+
+CREATE TABLE bots (
+id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+name TEXT NOT NULL,
+sign TEXT,
+sweet TEXT,
+sassy TEXT
+);
+
+
+CREATE TABLE games (
+id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+name TEXT NOT NULL,
+type TEXT,
+difficulty TEXT,
+recommend TEXT
+);
+module.export { frog, candy, mexicanfood }
