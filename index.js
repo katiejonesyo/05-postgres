@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const Frog = require('./models/Frog.js')
+const Frog = require('./models/Frog')
 app.use(express.json());
 require('dotenv').config();
 
@@ -17,15 +17,16 @@ app.get('/frog', (req, res) => {
 
 
 app.post('/frog', async(req, res) => {
-    const frog = await Frog.insert(req.body);
-    res.send(frog)
+    Frog
+    .insert(req.body)
+    .then(frogs => res.send(frogs));
 });
 
 
 app.put('/frog/:id', (req, res)  => {
     Frog
     .update(req.params.id, req.body)
-    .then((color) => res.send(frog))
+    .then((frog) => res.send(frog))
 });
 
 
@@ -35,9 +36,9 @@ app.delete('/frog/:id',(req, res) => {
     .then((frog) => res.send(frog));
 });
 
-app.listen('3002', () => {
+app.listen('3003', () => {
     console.log(`Listening on port 3002`);
 });
-module.exports = { app };
+module.exports = app;
 
 

@@ -26,13 +26,12 @@ module.exports = class Frog {
       };
 
 
-
     static async find() {
         const { rows } = await pool.query('SELECT * FROM frog')
             return rows.map(row => new Frog(row));
     }
 
-    static async frindById(id) {
+    static async findById(id) {
         const { rows } = await pool.query('SELECT * FROM frog WHERE id=$1', [id]);
 
         if(!rows[0]) throw new Error(`No frog with id ${id}`);
