@@ -1,14 +1,15 @@
 const pool = require('../utils/pool.js');
 
-module.exports = class Frog {
+module.exports = class Candy {
     id;
-    frog;
-    cuteness;
+    candy;
+    sour;
+    sweet;
 
     contructor(row) {
         this.id = row.id;
-        this.frog = row.frog;
-        this.cuteness = row.cuteness;
-        this.size = row.size;
+        this.candy = row.candy;
+        this.sour = row.sour;
+        this.sweet = row.sweet;
     }
 };
