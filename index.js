@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const Frog = require('./models/Frog')
+const port = 3003;
 app.use(express.json());
 require('dotenv').config();
+
 
 app.get('/', (req, res) => {
     res.send('Hello World')
@@ -36,8 +38,8 @@ app.delete('/frog/:id',(req, res) => {
     .then((frog) => res.send(frog));
 });
 
-app.listen('3003', () => {
-    console.log(`Listening on port 3002`);
+app.listen( port, () => {
+    console.log(`Listening on port 3003`);
 });
 module.exports = app;
 
