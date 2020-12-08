@@ -1,5 +1,6 @@
 const pool = require('../utils/pool.js');
 
+
 module.exports = class Frog {
     id;
     frog;
@@ -43,11 +44,10 @@ module.exports = class Frog {
             `UPDATE frog
             SET frog=$1
                 cuteness=$2
-            
             WHERE id=$4
             RETURNING *
             `,
-            [frog, cuteness,  id]
+            [frog, cuteness, id]
         );
 
         return new Frog(rows[0]);

@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const Frog = require('./models/frog.js')
+const Frog = require('./models/Frog.js')
 app.use(express.json());
+require('dotenv').config();
 
 app.get('/', (req, res) => {
     res.send('Hello World')
@@ -21,6 +22,18 @@ app.post('/frog', async(req, res) => {
 });
 
 
+app.put('/frog/:id', (req, res)  => {
+    Frog
+    .update(req.params.id, req.body)
+    .then((color) => res.send(frog))
+});
+
+
+app.delete('/frog/:id',(req, res) => {
+    Frog
+    .delete(req.params.id, req.body)
+    .then((frog) => res.send(frog));
+});
 
 app.listen('3002', () => {
     console.log(`Listening on port 3002`);
