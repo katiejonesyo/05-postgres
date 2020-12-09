@@ -7,7 +7,7 @@ module.exports = class Frog {
     cuteness;
    
 
-    contructor(row) {
+    constructor(row) {
         this.id = row.id;
         this.frog = row.frog;
         this.cuteness = row.cuteness;
@@ -16,12 +16,12 @@ module.exports = class Frog {
 
      // Crud Methods
 
-     static async insert({ frog, cuteness}) {
+     static async insert({ frog, cuteness }) {
         const { rows } = await pool.query(
-          'INSERT INTO frog (frog, cuteness) VALUES ($1, $2) RETURNING *',
+          'INSERT INTO frog (frog, cuteness ) VALUES ($1, $2) RETURNING *',
           [frog, cuteness]
         );
-    
+           
         return new Frog(rows[0]);
       };
 
@@ -41,9 +41,9 @@ module.exports = class Frog {
     static async update(id, { frog, cuteness }) {
         const { rows } = await pool.query(
             `UPDATE frog
-            SET frog=$1
+            SET frog=$1,
                 cuteness=$2
-            WHERE id=$4
+            WHERE id=$3
             RETURNING *
             `,
             [frog, cuteness, id]
@@ -53,7 +53,8 @@ module.exports = class Frog {
     }
 
     static async delete(id) {
-        const { rows } = await pool.query('DELETE FROM frog WHERE id=$1 RETURNING *', [id]);
+        const { rows } = await pool.query(
+            `DELETE FROM frog WHERE id=$1 RETURNING *`, [id]);
         return new Frog(rows[0]);
     }
 

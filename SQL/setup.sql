@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS frog;
+DROP TABLE IF EXISTS candy;
+DROP TABLE IF EXISTS mexicanfood;
+DROP TABLE IF EXISTS videogames;
+DROP TABLE IF EXISTS bots;
+
 CREATE TABLE frog (
 id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 frog TEXT NOT NULL,
@@ -29,11 +35,10 @@ sassy TEXT
 );
 
 
-CREATE TABLE games (
+CREATE TABLE videogames (
 id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 name TEXT NOT NULL,
 type TEXT,
 difficulty TEXT,
 recommend TEXT
 );
-module.export { frog, candy, mexicanfood }
